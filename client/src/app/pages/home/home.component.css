@@ -124,3 +124,35 @@ background-repeat: no-repeat;
   }
 }
 
+
+.our-mission{
+  font-family: 'Nanum Gothic', sans-serif;
+  margin-bottom: 50px;
+}
+
+.our-mission h1{
+  margin: 50px;
+  text-align: center;
+}
+
+.our-mission p{
+  text-align: center;
+}
+
+.myImage{
+  height: 400px;
+  width: 100%;
+  background-image: url("https://stmed.net/sites/default/files/watch-dogs-hd-wallpapers-33894-8470892.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+
+@media (max-width: 736px) {
+  .our-mission{
+    font-family: 'Nanum Gothic', sans-serif;
+    margin-bottom: 10px;
+  }
+
+}
