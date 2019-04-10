@@ -1,3 +1,4 @@
+
 // Modules
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -12,6 +13,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { ContactListComponent } from './contacts/contact-list/contact-list.component';
 import { ContactDetailsComponent } from './contacts/contact-details/contact-details.component';
 import { ContactDeleteComponent } from './contacts/contact-delete/contact-delete.component';
+import { SurveyDetailsComponent } from './survey/survey-details/survey-details.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
@@ -22,6 +24,9 @@ const routes: Routes = [
   {path: 'products', component: ProductsComponent, data: {title: 'Products'}},
   {path: 'services', component: ServicesComponent, data: {title: 'Services'}},
   {path: 'contact', component: ContactComponent, data: {title: 'Contact'}},
+
+  {path: 'survey/add', component: SurveyDetailsComponent, data: {title: 'Add Survey'}},
+  {path: 'survey/edit/:id', component: SurveyDetailsComponent, data: {title: 'Edit Survey'}},
 
   {path: 'contact/contact-list', component: ContactListComponent, data: {title: 'Contact List'}, canActivate: [AuthGuard]},
   {path: 'contact/contact-list/add', component: ContactDetailsComponent, data: {title: 'Add Contact'}, canActivate: [AuthGuard]},
