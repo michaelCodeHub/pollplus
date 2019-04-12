@@ -1,3 +1,4 @@
+import { Question } from './../../models/question';
 import { Survey } from './../../models/survey';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,6 +13,7 @@ import { SurveyService } from 'src/app/services/survey.service';
 export class SurveyDetailsComponent implements OnInit {
   title: string;
   survey: Survey;
+  questions: Question[]
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -21,6 +23,10 @@ export class SurveyDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.questions = new Array<Question>();
+
+    this.questions.push(new Question());
+
     this.title = this.activatedRoute.snapshot.data.title;
     this.survey = new Survey();
 
@@ -28,7 +34,7 @@ export class SurveyDetailsComponent implements OnInit {
       this.survey._id = params.id;
     });
 
-    if (this.title === 'Edit Contact') {
+    if (this.title === 'Edit Survey') {
       this.getSurvey(this.survey);
     }
   }
@@ -39,7 +45,18 @@ export class SurveyDetailsComponent implements OnInit {
     });
   }
 
+
+  onAddNew(): void {
+    this.questions.push(new Question());
+  }
+
    onDetailsPageSubmit(): void {
+
+    console.log(this.survey.surveyTill);
+
+    this.survey.questions = this.questions;
+    this.survey.surveyAuthor = 'currenauthorif';
+
     switch (this.title) {
       case 'Add Survey':
       this.surveyService.addSurvey(this.survey).subscribe(data => {

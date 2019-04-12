@@ -1,50 +1,61 @@
- <!-- Content for the Details Page -->
- <div class="container">
-    <div class="row">
-        <div class="col-md-offset-3 col-md-6">
-            <h1>{{ title }}</h1>
+<!-- Content for the Details Page -->
+<div class="container">
+  <div class="row">
+    <section class="col-md-offset-3 col-md-6">
+      <h1>{{ title }}</h1>
 
-            <form class="form" (submit)="onDetailsPageSubmit()">
-                <div class="form-group">
-                    <label for="FirstNameTextField">Title</label>
-                    <input type="text" class="form-control"
-                    id="TitleTextField"
-                    placeholder="Enter a title"
-                    name="title"
-                    [(ngModel)]="survey.surveyTitle"
-                    value="{{ survey.surveyTitle }}"
-                    required>
-                </div>
+      <form class="form" (submit)="onDetailsPageSubmit()">
+        <div class="form-group">
+          <label for="FirstNameTextField">Title</label>
+          <input type="text" class="form-control" id="TitleTextField" placeholder="Enter a title" name="title"
+            [(ngModel)]="survey.surveyTitle" value="{{ survey.surveyTitle }}" required>
+        </div>
 
-                <div class="form-group">
-                    <label for="LastNameTextField">From</label>
-                    <input type="text" class="form-control"
-                    id="FromTextField"
-                    placeholder="From"
-                    name="from"
-                    [(ngModel)]="survey.surveyFrom"
-                    value="{{ survey.surveyFrom }}"
-                    required>
-                </div>
 
-                <div class="form-group">
-                    <label for="AgeTextField">To</label>
-                    <input type="text" class="form-control"
-                    id="ToTextField"
-                    placeholder="To"
-                    name="to"
+        <div class="form-group">
+          <label for="FromTextField">From (DD/MM/YYYY)</label>
+          <input type="text" class="form-control" id="FromTextField" placeholder="From" name="from"
+            [(ngModel)]="survey.surveyFrom" value="{{ survey.surveyFrom }}" required>
+        </div>
+
+        <!-- <mat-form-field>
+                    <input
                     [(ngModel)]="survey.surveyTill"
                     value="{{ survey.surveyTill }}"
-                    required>
-                </div>
-
-                <button type="submit" class="btn btn-primary">
-                <i class="fas fa-edit"></i> {{ title }}</button>
-                <a routerLink="/contact/contact-list" class="btn btn-warning">
-                    <i class="fas fa-undo"></i> Cancel</a>
-            </form>
+                    matInput [matDatepicker]="picker"
+                    placeholder="Choose a date" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field> -->
 
 
+        <div class="form-group">
+          <label for="ToTextField">To(DD/MM/YYYY)</label>
+          <input type="text" class="form-control" id="ToTextField" placeholder="From" name="from"
+            [(ngModel)]="survey.surveyTill" value="{{ survey.surveyTill }}" required>
         </div>
-    </div>
+
+        <a [routerLink]="" (click)="onAddNew()">Add new question</a>
+
+        <table>
+          <tr *ngFor="let question of questions; let i = index">
+            <section id="quesion" name="">
+              <div class="form-group">
+                <label for="questionField">Title</label>
+                <input type="text" class="form-control" id="questionField" placeholder="Enter a Question"
+                  name="question{{i}}" [(ngModel)]="question.question" value="{{ question.question }}" required>
+              </div>
+            </section>
+
+          </tr>
+        </table>
+
+        <button type="submit" class="btn btn-primary">
+          <i class="fas fa-edit"></i> {{ title }}</button>
+        <a routerLink="/contact/contact-list" class="btn btn-warning">
+          <i class="fas fa-undo"></i> Cancel</a>
+      </form>
+    </section>
+
   </div>
+</div>
