@@ -5,16 +5,16 @@ let jwt = require('jsonwebtoken');
 // create a reference to the db schema
 let surveyModel = require('../models/survey');
 
-// module.exports.displayContactList = (req, res, next) =>{
-//     contactModel.find((err, contactList) => {
-//         if(err) {
-//             return console.error(err);
-//         }
-//         else {
-//            res.json({success: true, msg: 'Contact List Displayed Successfully', contactList: contactList, user: req.user});
-//         }
-//     });
-// }
+module.exports.displaySurveyList = (req, res, next) =>{
+    surveyModel.find((err, surveyList) => {
+        if(err) {
+            return console.error(err);
+        }
+        else {
+           res.json({success: true, msg: 'Contact List Displayed Successfully', surveyList: surveyList, user: req.user});
+        }
+    });
+}
 
 module.exports.displayAddPage = (req, res, next) => {
     res.json({success: true, msg: 'Successfully Displayed Add Survey Page'});
@@ -22,9 +22,13 @@ module.exports.displayAddPage = (req, res, next) => {
 
 module.exports.processAddPage = (req, res, next) => {
 
+    console.log("mcisdjfknksdjfnm");
     let newSurvey = surveyModel({
-        "surveyTitle": req.body.title,
-        "surveyAuthor": req.body.author
+        "surveyTitle": req.body.surveyTitle,
+        "surveyAuthor": req.body.surveyAuthor,
+        "surveyFrom": req.body.surveyFrom,
+        "surveyTill": req.body.surveyTill,
+        "questions": req.body.questions
     });
 
     surveyModel.create(newSurvey, (err, surveyModel) => {

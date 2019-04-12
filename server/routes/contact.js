@@ -16,7 +16,7 @@ function requireAuth(req, res, next) {
 }
 
 /* GET Contact List page - READ Operation */
-router.get('/', passport.authenticate('jwt', {session: false}), contactController.displayContactList);
+router.get('/', contactController.displayContactList);
 
 /* GET Route for the Add page 
    this will display the Add page */
