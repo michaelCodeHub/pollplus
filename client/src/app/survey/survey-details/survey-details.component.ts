@@ -15,7 +15,7 @@ import { SurveyService } from 'src/app/services/survey.service';
 export class SurveyDetailsComponent implements OnInit {
   title: string;
   survey: Survey;
-  questions: Question[]
+  questions: Question[];
   user: User;
 
   constructor(
@@ -46,8 +46,8 @@ export class SurveyDetailsComponent implements OnInit {
   }
 
   private getSurvey(survey: Survey): void {
-    this.surveyService.getContact(survey).subscribe(data => {
-      this.survey = data.contact;
+    this.surveyService.getSurvey(survey).subscribe(data => {
+      this.survey = data.survey;
     });
   }
 

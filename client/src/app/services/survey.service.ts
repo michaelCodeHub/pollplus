@@ -31,11 +31,11 @@ export class SurveyService {
   }
 
   public getList(): Observable<any> {
-    this.loadToken();
+    // this.loadToken();
     return this.http.get<any>(this.endpoint, this.httpOptions);
   }
 
-  public getContact(survey: Survey): Observable<any> {
+  public getSurvey(survey: Survey): Observable<any> {
     this.loadToken();
     return this.http.get<any>(this.endpoint + 'edit/' + survey._id, this.httpOptions);
   }

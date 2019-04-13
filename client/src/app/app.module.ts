@@ -32,6 +32,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { SurveyDetailsComponent } from './survey/survey-details/survey-details.component';
 import { MaterialModule } from './material.module';
 import { SurveyListComponent } from './survey/survey-list/survey-list.component';
+import { SurveyQuestionsComponent } from './survey/survey-questions/survey-questions.component';
 
 export function jwtTokenGetter() {
   return localStorage.getItem('id_token');
@@ -55,7 +56,8 @@ export function jwtTokenGetter() {
     ContactDetailsComponent,
     ContactDeleteComponent,
     SurveyDetailsComponent,
-    SurveyListComponent
+    SurveyListComponent,
+    SurveyQuestionsComponent
   ],
   imports: [
     BrowserModule,
