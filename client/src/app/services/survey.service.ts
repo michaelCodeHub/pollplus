@@ -31,7 +31,7 @@ export class SurveyService {
   }
 
   public getList(): Observable<any> {
-    this.loadToken();
+    // this.loadToken();
     return this.http.get<any>(this.endpoint, this.httpOptions);
   }
 

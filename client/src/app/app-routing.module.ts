@@ -14,6 +14,7 @@ import { ContactListComponent } from './contacts/contact-list/contact-list.compo
 import { ContactDetailsComponent } from './contacts/contact-details/contact-details.component';
 import { ContactDeleteComponent } from './contacts/contact-delete/contact-delete.component';
 import { SurveyDetailsComponent } from './survey/survey-details/survey-details.component';
+import { SurveyListComponent } from './survey/survey-list/survey-list.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
@@ -26,7 +27,7 @@ const routes: Routes = [
   {path: 'contact', component: ContactComponent, data: {title: 'Contact'}},
 
   {path: 'survey/add', component: SurveyDetailsComponent, data: {title: 'Add Survey'}},
-  {path: 'survey/survey-list', component: SurveyDetailsComponent, data: {title: 'Active Survey'}},
+  {path: 'survey/survey-list', component: SurveyListComponent, data: {title: 'Active Survey'}},
   {path: 'survey/survey-list', component: SurveyDetailsComponent, data: {title: 'My Survey'}},
   {path: 'survey/edit/:id', component: SurveyDetailsComponent, data: {title: 'Edit Survey'}},
 

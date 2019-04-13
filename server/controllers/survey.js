@@ -11,7 +11,7 @@ module.exports.displaySurveyList = (req, res, next) =>{
             return console.error(err);
         }
         else {
-           res.json({success: true, msg: 'Contact List Displayed Successfully', surveyList: surveyList, user: req.user});
+           res.json({success: true, msg: 'Survey List Displayed Successfully', surveyList: surveyList, user: req.user});
         }
     });
 }
