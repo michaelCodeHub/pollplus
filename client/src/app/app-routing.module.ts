@@ -1,3 +1,4 @@
+import { SurveyQuestionsComponent } from './survey/survey-questions/survey-questions.component';
 
 // Modules
 import { NgModule } from '@angular/core';
@@ -30,6 +31,7 @@ const routes: Routes = [
   {path: 'survey/survey-list', component: SurveyListComponent, data: {title: 'Active Survey'}},
   {path: 'survey/survey-list', component: SurveyDetailsComponent, data: {title: 'My Survey'}},
   {path: 'survey/edit/:id', component: SurveyDetailsComponent, data: {title: 'Edit Survey'}},
+  {path: 'survey/questions/:id', component: SurveyQuestionsComponent, data: {title: 'Survey Questions'}},
 
   {path: 'contact/contact-list', component: ContactListComponent, data: {title: 'Contact List'}, canActivate: [AuthGuard]},
   {path: 'contact/contact-list/add', component: ContactDetailsComponent, data: {title: 'Add Contact'}, canActivate: [AuthGuard]},

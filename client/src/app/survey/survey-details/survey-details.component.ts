@@ -43,6 +43,7 @@ export class SurveyDetailsComponent implements OnInit {
     if (this.title === 'Edit Survey') {
       this.getSurvey(this.survey);
     }
+    this.isLoggedIn();
   }
 
   private getSurvey(survey: Survey): void {

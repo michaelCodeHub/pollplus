@@ -1,3 +1,34 @@
-<p>
-  survey-questions works!
-</p>
+<div class="container">
+  <div class="row">
+      <div class="col-md-offset-3 col-md-6">
+          <h1>{{survey.surveyTitle}}</h1>
+
+
+          <br>
+
+          <form class="form" (submit)="onSurveySubmit()">
+            <div *ngFor="let question of questions">
+              <p>{{ question.question }}</p>
+              <div class="row">
+                  <div class="col-lg-3">
+                    <input type="radio" id="{{question.question}}" value="1"> {{question.option1}}<br>
+                  </div>
+                  <div class="col-lg-3">
+                    <input type="radio" id="{{question.question}}" value="2"> {{question.option1}}<br>
+                  </div>
+                  <div class="col-lg-3">
+                    <input type="radio" id="{{question.question}}" value="3"> {{question.option1}}<br>
+                  </div>
+                  <div class="col-lg-3">
+                    <input type="radio" id="{{question.question}}" value="4"> {{question.option1}}<br>
+                  </div>
+              </div>
+            </div>
+
+            <input type="submit" value="Submit Survey"/>
+
+          </form>
+
+      </div>
+  </div>
+</div>

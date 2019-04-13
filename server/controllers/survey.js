@@ -19,12 +19,28 @@ module.exports.displaySurveyList = (req, res, next) =>{
 module.exports.displayMySurveys = (req, res, next) =>{
     let username = req.params.username;
 
-    surveyModel.find((err, surveyList) => {
+    surveyModel.find({ surveyAuthor: { $in: username } }, (err, surveyList) => {
         if(err) {
             return console.error(err);
         }
         else {
            res.json({success: true, msg: 'Contact List Displayed Successfully', surveyList: surveyList, user: req.user});
+        }
+    });
+}
+
+
+module.exports.displaySurvey = (req, res, next) =>{
+    let id = req.params.id;
+
+    surveyModel.findById(id, (err, surveyObject) => {
+        if(err) {
+            console.log(err);
+            res.end(err);
+        }
+        else
+        {
+            res.json({success: true, msg: 'Successfully Displayed Contact to Edit', survey: surveyObject});
         }
     });
 }
