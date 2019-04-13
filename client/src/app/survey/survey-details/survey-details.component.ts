@@ -56,6 +56,22 @@ export class SurveyDetailsComponent implements OnInit {
     this.questions.push(new Question());
   }
 
+  onDelete(i: number): void {
+    if(!confirm('Are You Sure?')) {
+      this.router.navigate(['/survey/add']);
+    }
+    else {
+     // for( var i = 0; i < this.questions.length; i++){
+      //  if ( this.questions[i] === 5) {
+      //    this.questions.splice(i, 1);
+      //  }
+     //}
+
+   this.questions.splice(i,1);
+    }
+
+  }
+
    onDetailsPageSubmit(): void {
 
     console.log(this.survey.surveyTill);
