@@ -66,22 +66,18 @@
                     <input type="text" class="form-control" id="optionField" placeholder="Option 4" name="question{{i}}"
                       [(ngModel)]="question.option4" value="{{ question.option4}}" required>
                   </div>
-
                 </div>
-                <br/>
-                    <a [routerLink]="" (click)="onAddNew()" class="btn btn-outline-success btn-sm col-lg-5 margin-left">Add new question</a>
-
-                    <a [routerLink]="" (click)="onDelete(i)" class="btn btn-outline-danger btn-sm col-lg-5 margin-left"> Delete Question</a>
-
-
-
               </div>
             </section>
 
           </tr>
         </table>
 
-        <br>
+        <div class="addButton" >
+          <a [routerLink]="" (click)="onAddNew()">Add new question</a>
+        </div>
+
+
         <div class="container row">
             <button type="submit" class="btn btn-primary col-lg-5">
                 {{ title }}</button>

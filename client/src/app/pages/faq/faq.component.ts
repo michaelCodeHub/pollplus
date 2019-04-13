@@ -3,11 +3,11 @@ import { BasePageComponent } from "src/app/partials/base-page/base-page.componen
 import { ActivatedRoute } from "@angular/router";
 
 @Component({
-  selector: "app-contact",
-  templateUrl: "./contact.component.html",
-  styleUrls: ["./contact.component.css"]
+  selector: "app-faq",
+  templateUrl: "./faq.component.html",
+  styleUrls: ["./faq.component.css"]
 })
-export class ContactComponent extends BasePageComponent implements OnInit {
+export class FaqComponent extends BasePageComponent implements OnInit {
   constructor(route: ActivatedRoute) {
     super(route);
   }
