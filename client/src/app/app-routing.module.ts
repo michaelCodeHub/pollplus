@@ -26,7 +26,7 @@ const routes: Routes = [
   {path: 'services', component: ServicesComponent, data: {title: 'Services'}},
   {path: 'contact', component: ContactComponent, data: {title: 'Contact'}},
 
-  {path: 'survey/add', component: SurveyDetailsComponent, data: {title: 'Add Survey'}},
+  {path: 'survey/add', component: SurveyDetailsComponent, data: {title: 'Add Survey'}, canActivate: [AuthGuard]},
   {path: 'survey/survey-list', component: SurveyListComponent, data: {title: 'Active Survey'}},
   {path: 'survey/survey-list', component: SurveyDetailsComponent, data: {title: 'My Survey'}},
   {path: 'survey/edit/:id', component: SurveyDetailsComponent, data: {title: 'Edit Survey'}},
