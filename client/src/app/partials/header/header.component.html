@@ -31,9 +31,20 @@
               <a class="nav-link" routerLink="/">Create Survey</a>
             </li>
 
-        <li *ngIf="isLoggedIn()" class="navbar-text text-success ml-5 mr-5 d-none d-lg-inline"><i
-          class="fas fa-lg fa-user"></i>
-        Welcome, {{ user.displayName }}</li>
+
+
+
+        <li *ngIf="isLoggedIn()">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+              Welcome, {{ user.displayName }}
+              <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" routerLink="#" name="mySurvey">My Surveys</a>
+                <a class="dropdown-item" routerLink="#" name="editProfile">Edit Profile</a>
+
+              </div>
+          </a>
+
+      </li>
 
       <li *ngIf="isLoggedIn()" class="nav-item"><a (click)="onLogoutClick()" routerLink="/logout" class="nav-link">
           Logout</a></li>
