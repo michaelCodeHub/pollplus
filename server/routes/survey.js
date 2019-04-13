@@ -17,12 +17,15 @@ function requireAuth(req, res, next) {
 /* GET Contact List page - READ Operation */
 router.get('/', surveyController.displaySurveyList);
 
+/* GET Contact List page - READ Operation */
+router.get('/:username', surveyController.displayMySurveys);
+
 /* GET Route for the Add page 
    this will display the Add page */
 router.get('/add', passport.authenticate('jwt', {session: false}), surveyController.displayAddPage);
 
 /* POST Route for processing the Add page */
-router.post('/add', surveyController.processAddPage);
+router.post('/add', passport.authenticate('jwt', {session: false}), surveyController.processAddPage);
 
 // /* GET request - display the Edit page */
 // router.get('/edit/:id', passport.authenticate('jwt', {session: false}), surveyController.displayEditPage);
