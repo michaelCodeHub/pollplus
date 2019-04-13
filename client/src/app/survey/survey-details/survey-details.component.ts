@@ -1,3 +1,5 @@
+import { AuthService } from 'src/app/services/auth.service';
+import { User } from './../../models/user';
 import { Question } from './../../models/question';
 import { Survey } from './../../models/survey';
 import { Component, OnInit } from '@angular/core';
@@ -14,15 +16,19 @@ export class SurveyDetailsComponent implements OnInit {
   title: string;
   survey: Survey;
   questions: Question[]
+  user: User;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private flashMessage: FlashMessagesService,
     private surveyService: SurveyService,
+    private authService: AuthService,
     private router: Router
   ) { }
 
   ngOnInit() {
+    this.user = new User();
+
     this.questions = new Array<Question>();
 
     this.questions.push(new Question());
@@ -55,17 +61,17 @@ export class SurveyDetailsComponent implements OnInit {
     console.log(this.survey.surveyTill);
 
     this.survey.questions = this.questions;
-    this.survey.surveyAuthor = 'currenauthorif';
+    this.survey.surveyAuthor = this.user.username;
 
     switch (this.title) {
       case 'Add Survey':
       this.surveyService.addSurvey(this.survey).subscribe(data => {
         if (data.success) {
           this.flashMessage.show(data.msg, {cssClass: 'alert-success', timeOut: 3000});
-          this.router.navigate(['/survey/survey-list']);
+          this.router.navigate(['/survey/my-survey']);
         } else {
           this.flashMessage.show('Add Contact Failed', {cssClass: 'alert-danger', timeOut: 3000});
-          this.router.navigate(['/survey/survey-list']);
+          this.router.navigate(['/survey/my-survey']);
         }
       });
       break;
@@ -74,14 +80,23 @@ export class SurveyDetailsComponent implements OnInit {
       this.surveyService.editSurvey(this.survey).subscribe(data => {
         if (data.success) {
           this.flashMessage.show(data.msg, {cssClass: 'alert-success', timeOut: 3000});
-          this.router.navigate(['/contact/survey-list']);
+          this.router.navigate(['/survey/my-survey']);
         } else {
           this.flashMessage.show('Edit Survey Failed', {cssClass: 'alert-danger', timeOut: 3000});
-          this.router.navigate(['/contact/survey-list']);
+          this.router.navigate(['/survey/my-survey']);
         }
       });
       break;
     }
+  }
+
+
+  isLoggedIn(): boolean {
+    const result = this.authService.loggedIn();
+    if(result) {
+      this.user = JSON.parse(localStorage.getItem('user'));
+    }
+    return result;
   }
 
 }
