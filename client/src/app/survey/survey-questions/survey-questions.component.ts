@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
@@ -40,16 +39,15 @@ export class SurveyQuestionsComponent implements OnInit {
     });
 
     this.getSurvey(this.survey);
-
   }
 
   private getSurvey(survey: Survey): void {
     this.surveyService.getSurvey(survey).subscribe(data => {
       this.survey = data.survey;
-      this.questions = this.survey.questions;
     });
   }
 
+<<<<<<< HEAD
   onSurveySubmit(): void {
 
     this.questions.forEach(element => {
@@ -59,4 +57,6 @@ export class SurveyQuestionsComponent implements OnInit {
 
   }
 
+=======
+>>>>>>> a2ad0c8e045dd4da7521a3a896ac0d5a2daf8ea5
 }
