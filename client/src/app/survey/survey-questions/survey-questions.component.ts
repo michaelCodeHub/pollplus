@@ -47,7 +47,6 @@ export class SurveyQuestionsComponent implements OnInit {
     });
   }
 
-<<<<<<< HEAD
   onSurveySubmit(): void {
 
     this.questions.forEach(element => {
@@ -57,6 +56,4 @@ export class SurveyQuestionsComponent implements OnInit {
 
   }
 
-=======
->>>>>>> a2ad0c8e045dd4da7521a3a896ac0d5a2daf8ea5
 }
