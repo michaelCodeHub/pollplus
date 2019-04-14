@@ -51,10 +51,10 @@ export class SurveyQuestionsComponent implements OnInit {
   }
 
   onSurveySubmit(): void {
-    console.log('sss');
 
     this.questions.forEach(element => {
-      console.log(((document.getElementById(element.question) as HTMLInputElement).value));
+
+        element.answers.push();
     });
 
   }
