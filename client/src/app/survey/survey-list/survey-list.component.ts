@@ -36,8 +36,10 @@ export class SurveyListComponent implements OnInit {
   }
   private onDeleteClick(): void {
     if (!confirm('Are You Sure?')) {
-      this.router.navigate(['/survey/survey-list']);
+      this.router.navigate(['/survey/list']);
     }
   }
+
+
 
 }

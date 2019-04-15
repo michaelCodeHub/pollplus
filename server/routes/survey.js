@@ -17,8 +17,12 @@ function requireAuth(req, res, next) {
 /* GET Contact List page - READ Operation */
 router.get('/', surveyController.displaySurveyList);
 
+router.get('/answer', surveyController.displayAnswerList);
+
+router.get('/:id', surveyController.displaySurvey);
+
 /* GET Contact List page - READ Operation */
-router.get('/:username', surveyController.displayMySurveys);
+router.get('mysurvey/:username', surveyController.displayMySurveys);
 
 /* GET Route for the Add page 
    this will display the Add page */
@@ -27,6 +31,8 @@ router.get('/add', passport.authenticate('jwt', {session: false}), surveyControl
 /* POST Route for processing the Add page */
 router.post('/add', passport.authenticate('jwt', {session: false}), surveyController.processAddPage);
 
+router.post('/filledSurvey/add', passport.authenticate('jwt', {session: false}), surveyController.processFilledSurvey);
+
 // /* GET request - display the Edit page */
 // router.get('/edit/:id', passport.authenticate('jwt', {session: false}), surveyController.displayEditPage);
 
@@ -34,6 +40,6 @@ router.post('/add', passport.authenticate('jwt', {session: false}), surveyContro
 // router.post('/edit/:id', passport.authenticate('jwt', {session: false}), surveyController.processEditPage);
 
 // /* GET request to perform the delete action */
-// router.get('/delete/:id', passport.authenticate('jwt', {session: false}), surveyController.performDelete);
+router.get('/delete/:id', passport.authenticate('jwt', {session: false}), surveyController.performDelete);
 
 module.exports = router;

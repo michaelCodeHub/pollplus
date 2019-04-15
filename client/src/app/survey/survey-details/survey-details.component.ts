@@ -43,6 +43,7 @@ export class SurveyDetailsComponent implements OnInit {
     if (this.title === 'Edit Survey') {
       this.getSurvey(this.survey);
     }
+    this.isLoggedIn();
   }
 
   private getSurvey(survey: Survey): void {
@@ -53,7 +54,24 @@ export class SurveyDetailsComponent implements OnInit {
 
 
   onAddNew(): void {
-    this.questions.push(new Question());
+    let question = new Question()
+    this.questions.push(question);
+  }
+
+  onDelete(i: number): void {
+    if(!confirm('Are You Sure?')) {
+      this.router.navigate(['/survey/add']);
+    }
+    else {
+     // for( var i = 0; i < this.questions.length; i++){
+      //  if ( this.questions[i] === 5) {
+      //    this.questions.splice(i, 1);
+      //  }
+     //}
+
+   this.questions.splice(i, 1);
+    }
+
   }
 
    onDetailsPageSubmit(): void {
@@ -65,13 +83,14 @@ export class SurveyDetailsComponent implements OnInit {
 
     switch (this.title) {
       case 'Add Survey':
+      console.log(this.survey);
       this.surveyService.addSurvey(this.survey).subscribe(data => {
         if (data.success) {
           this.flashMessage.show(data.msg, {cssClass: 'alert-success', timeOut: 3000});
-          this.router.navigate(['/survey/my-survey']);
+          this.router.navigate(['/survey/list']);
         } else {
           this.flashMessage.show('Add Contact Failed', {cssClass: 'alert-danger', timeOut: 3000});
-          this.router.navigate(['/survey/my-survey']);
+          this.router.navigate(['/survey/list']);
         }
       });
       break;

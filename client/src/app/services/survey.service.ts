@@ -1,3 +1,4 @@
+import { FilledSurvey } from './../models/filled-survey';
 
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
@@ -37,7 +38,7 @@ export class SurveyService {
 
   public getSurvey(survey: Survey): Observable<any> {
     this.loadToken();
-    return this.http.get<any>(this.endpoint + 'edit/' + survey._id, this.httpOptions);
+    return this.http.get<any>(this.endpoint + '' + survey._id, this.httpOptions);
   }
 
   public addSurvey(survey: Survey): Observable<any> {
@@ -45,12 +46,18 @@ export class SurveyService {
     return this.http.post<any>(this.endpoint + 'add', survey, this.httpOptions);
   }
 
+
+  public addFilledSurvey(filledSurvey: FilledSurvey): Observable<any> {
+    this.loadToken();
+    return this.http.post<any>(this.endpoint + 'filledSurvey/add', filledSurvey, this.httpOptions);
+  }
+
   public editSurvey(survey: Survey): Observable<any> {
     this.loadToken();
     return this.http.post<any>(this.endpoint + 'edit/' + survey._id, survey, this.httpOptions);
   }
 
-  public deleteContact(survey: Survey): Observable<any> {
+  public deleteSurvey(survey: Survey): Observable<any> {
     this.loadToken();
     return this.http.get<any>(this.endpoint + 'delete/' + survey._id, this.httpOptions);
   }

@@ -20,6 +20,7 @@ let surveySchema = mongoose.Schema({
     type: Date,
   },
   questions: [{ 
+    _id: String,
   question: String,
   option1: String,
   option2: String,
