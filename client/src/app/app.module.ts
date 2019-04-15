@@ -41,6 +41,8 @@ import { SurveyDetailsComponent } from "./survey/survey-details/survey-details.c
 import { MaterialModule } from "./material.module";
 import { SurveyListComponent } from "./survey/survey-list/survey-list.component";
 import { SurveyQuestionsComponent } from "./survey/survey-questions/survey-questions.component";
+import { SurveyGridComponent } from './survey/survey-grid/survey-grid.component';
+import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 
 export function jwtTokenGetter() {
   return localStorage.getItem("id_token");
@@ -66,7 +68,8 @@ export function jwtTokenGetter() {
     SurveyDetailsComponent,
     SurveyListComponent,
     SurveyQuestionsComponent,
-    FaqComponent
+    FaqComponent,
+    SurveyGridComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +82,10 @@ export function jwtTokenGetter() {
       config: {
         tokenGetter: jwtTokenGetter
       }
-    })
+    }),
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [FlashMessagesService, AuthGuard],
   bootstrap: [AppComponent]

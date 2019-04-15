@@ -15,6 +15,7 @@ import { ContactDetailsComponent } from "./contacts/contact-details/contact-deta
 import { ContactDeleteComponent } from "./contacts/contact-delete/contact-delete.component";
 import { SurveyDetailsComponent } from "./survey/survey-details/survey-details.component";
 import { SurveyListComponent } from "./survey/survey-list/survey-list.component";
+import { SurveyGridComponent } from "./survey/survey-grid/survey-grid.component";
 import { RegisterComponent } from "./pages/register/register.component";
 import { LoginComponent } from "./pages/login/login.component";
 import { AuthGuard } from "./guards/auth.guard";
@@ -43,6 +44,11 @@ const routes: Routes = [
   {
     path: "survey/survey-list",
     component: SurveyListComponent,
+    data: { title: "Active Survey" }
+  },
+  {
+    path: "survey/survey-grid",
+    component: SurveyGridComponent,
     data: { title: "Active Survey" }
   },
   {

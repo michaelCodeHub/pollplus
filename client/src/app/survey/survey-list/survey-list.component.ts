@@ -27,6 +27,7 @@ export class SurveyListComponent implements OnInit {
   }
   displaySurveyList(): void {
     this.surveyService.getList().subscribe(data => {
+      console.log('call dis');
       if (data.success) {
         this.surveys = data.surveyList;
       } else {
