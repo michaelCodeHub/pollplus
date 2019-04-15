@@ -14,6 +14,9 @@ export class SurveyListComponent implements OnInit {
 
   surveys: Survey[];
   username: string;
+  numOfDays: number[] = new Array();
+  isMySurvey = false;
+  title: string;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -24,25 +27,36 @@ export class SurveyListComponent implements OnInit {
 
   ngOnInit() {
     this.surveys = new Array<Survey>();
+    this.title = this.activatedRoute.snapshot.data.title;
 
     this.activatedRoute.params.subscribe(params => {
       this.username = params.username;
     });
 
-    if (this.username != null){
-
+    if (this.username != null) {
+      this.isMySurvey = true;
       this.displayMySurveyList(this.username);
     } else {
-
-    this.displaySurveyList();
+      this.isMySurvey = false;
+      this.displaySurveyList();
     }
   }
   displaySurveyList(): void {
     this.surveyService.getList().subscribe(data => {
       if (data.success) {
         this.surveys = data.surveyList;
+
+
+        for (let index = 0; index < this.surveys.length; index++) {
+          const today = new Date();
+          const secondDate = new Date(this.surveys[index].surveyTill);
+          const timeDiff = Math.abs(today.getTime() - secondDate.getTime());
+          this.numOfDays[index] = Math.ceil(timeDiff / (1000 * 3600 * 24));
+        }
+
+
       } else {
-        this.flashMessage.show('User must be logged-in', {cssClass: 'alert-danger', timeOut: 3000});
+        this.flashMessage.show('User must be logged-in', { cssClass: 'alert-danger', timeOut: 3000 });
       }
     });
   }
@@ -51,8 +65,16 @@ export class SurveyListComponent implements OnInit {
     this.surveyService.getMySurvey(username).subscribe(data => {
       if (data.success) {
         this.surveys = data.surveyList;
+
+        for (let index = 0; index < this.surveys.length; index++) {
+          const today = new Date();
+          const secondDate = new Date(this.surveys[index].surveyTill);
+          const timeDiff = Math.abs(today.getTime() - secondDate.getTime());
+          this.numOfDays[index] = Math.ceil(timeDiff / (1000 * 3600 * 24));
+        }
+
       } else {
-        this.flashMessage.show('User must be logged-in', {cssClass: 'alert-danger', timeOut: 3000});
+        this.flashMessage.show('User must be logged-in', { cssClass: 'alert-danger', timeOut: 3000 });
       }
     });
   }

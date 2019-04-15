@@ -1,0 +1,26 @@
+.surveyList{
+
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+
+.btn{
+  margin: 2px;
+}
+
+.buttons{
+  margin:auto;
+  text-align: right;
+}
+
+
+
+
+@media (max-width: 736px) {
+
+.buttons{
+  margin:auto;
+  text-align: left;
+}
+
+  }
