@@ -17,18 +17,7 @@ module.exports.displaySurveyList = (req, res, next) =>{
     });
 }
 
-module.exports.displayAnswerList = (req, res, next) =>{
-    answerModel.find((err, answerList) => {
-        if(err) {
-            return console.error(err);
-        }
-        else {
-           res.json({success: true, msg: 'Survey List Displayed Successfully', answerList: answerList, user: req.user});
-        }
-    });
-}
-
-module.exports.displayMySurveys = (req, res, next) =>{
+module.exports.displayMySurveyList = (req, res, next) =>{
     let username = req.params.username;
 
     surveyModel.find({ surveyAuthor: { $in: username } }, (err, surveyList) => {
@@ -37,6 +26,17 @@ module.exports.displayMySurveys = (req, res, next) =>{
         }
         else {
            res.json({success: true, msg: 'Contact List Displayed Successfully', surveyList: surveyList, user: req.user});
+        }
+    });
+}
+
+module.exports.displayAnswerList = (req, res, next) =>{
+    answerModel.find((err, answerList) => {
+        if(err) {
+            return console.error(err);
+        }
+        else {
+           res.json({success: true, msg: 'Survey List Displayed Successfully', answerList: answerList, user: req.user});
         }
     });
 }

@@ -16,13 +16,12 @@ function requireAuth(req, res, next) {
 
 /* GET Contact List page - READ Operation */
 router.get('/', surveyController.displaySurveyList);
+router.get('/list/:username', surveyController.displayMySurveyList);
 
 router.get('/answer', surveyController.displayAnswerList);
 
 router.get('/:id', surveyController.displaySurvey);
 
-/* GET Contact List page - READ Operation */
-router.get('mysurvey/:username', surveyController.displayMySurveys);
 
 /* GET Route for the Add page 
    this will display the Add page */

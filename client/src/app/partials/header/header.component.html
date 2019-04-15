@@ -38,17 +38,14 @@
           <a class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
               Welcome, {{ user.displayName }}
               <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" routerLink="#" name="mySurvey">My Surveys</a>
+                <a class="dropdown-item" routerLink="/survey/list/{{ user.username }}" name="mySurvey">My Surveys</a>
                 <a class="dropdown-item" routerLink="#" name="editProfile">Edit Profile</a>
-
+                <a class="dropdown-item"  *ngIf="isLoggedIn()" (click)="onLogoutClick()" routerLink="/logout" >
+                  Logout</a>
               </div>
           </a>
 
       </li>
-
-      <li *ngIf="isLoggedIn()" class="nav-item"><a (click)="onLogoutClick()" routerLink="/logout" class="nav-link">
-          Logout</a></li>
-
       <li *ngIf="!isLoggedIn()" class="nav-item"><a routerLink="/login" class="nav-link">
           Login</a></li>
     </ul>
