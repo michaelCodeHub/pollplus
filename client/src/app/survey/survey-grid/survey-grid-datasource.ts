@@ -28,14 +28,14 @@ export class SurveyGridDataSource extends DataSource<Survey> {
     this.surveyService.getList().subscribe(data => {
       if (data.success) {
         console.log('call dis');
-        this.data = data.surveyList;
+        d = data.surveyList;
 
       } else {
         this.flashMessage.show('User must be logged-in', {cssClass: 'alert-danger', timeOut: 3000});
       }
 
     });
-    return
+    return d;
   }
   /**
    * Connect this data source to the table. The table will only update when
