@@ -3,6 +3,9 @@ import { MatDatepickerModule,
         MatNativeDateModule,
         MatFormFieldModule,
         MatInputModule } from '@angular/material';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -11,14 +14,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatFormFieldModule,
     MatNativeDateModule,
     MatInputModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule, MatIconModule, MatTableModule, FormsModule, ReactiveFormsModule
   ],
   exports: [
     MatDatepickerModule,
     MatFormFieldModule,
     MatNativeDateModule,
     MatInputModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule, MatIconModule, MatTableModule, FormsModule, ReactiveFormsModule
   ],
   providers: [ MatDatepickerModule ],
 })
