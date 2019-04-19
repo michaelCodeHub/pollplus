@@ -31,14 +31,27 @@ module.exports.displayMySurveyList = (req, res, next) =>{
 }
 
 module.exports.displayAnswerList = (req, res, next) =>{
-    answerModel.find((err, answerList) => {
+    let id = req.params.id;
+
+    surveyModel.findById(id, (err, surveyObject) => {
         if(err) {
-            return console.error(err);
+            console.log(err);
+            res.end(err);
         }
-        else {
-           res.json({success: true, msg: 'Survey List Displayed Successfully', answerList: answerList, user: req.user});
+        else
+        {
+            answerModel.find({ surveyId: { $in: id } }, (err, answerObject) => {
+                if(err) {
+                    return console.error(err);
+                }
+                else {
+                    console.log(answerObject);
+                    res.json({success: true, msg: 'Successfully Displayed Contact to Edit', survey: surveyObject, answers: answerObject});
+                }
+            });
         }
     });
+
 }
 
 

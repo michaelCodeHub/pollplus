@@ -18,9 +18,11 @@ function requireAuth(req, res, next) {
 router.get('/', surveyController.displaySurveyList);
 router.get('/list/:username', surveyController.displayMySurveyList);
 
-router.get('/answer', surveyController.displayAnswerList);
+router.get('/answer/:id', surveyController.displayAnswerList);
 
 router.get('/:id', surveyController.displaySurvey);
+
+router.get('/answer/:id', surveyController.displayAnswerList);
 
 
 /* GET Route for the Add page 

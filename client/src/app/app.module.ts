@@ -34,6 +34,7 @@ import { MaterialModule } from './material.module';
 import { SurveyListComponent } from './survey/survey-list/survey-list.component';
 import { SurveyQuestionsComponent } from './survey/survey-questions/survey-questions.component';
 import { SurveyDeleteComponent } from './survey/survey-delete/survey-delete.component';
+import { SurveyResultComponent } from './survey/survey-result/survey-result.component';
 
 export function jwtTokenGetter() {
   return localStorage.getItem('id_token');
@@ -59,7 +60,8 @@ export function jwtTokenGetter() {
     SurveyDetailsComponent,
     SurveyListComponent,
     SurveyQuestionsComponent,
-    SurveyDeleteComponent
+    SurveyDeleteComponent,
+    SurveyResultComponent
   ],
   imports: [
     BrowserModule,

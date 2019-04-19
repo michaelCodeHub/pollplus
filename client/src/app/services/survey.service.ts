@@ -41,6 +41,11 @@ export class SurveyService {
     return this.http.get<any>(this.endpoint + '' + survey._id, this.httpOptions);
   }
 
+  public getSurveyAnswers(survey: Survey): Observable<any> {
+    this.loadToken();
+    return this.http.get<any>(this.endpoint + 'answer/' + survey._id, this.httpOptions);
+  }
+
   public getMySurvey(username: string): Observable<any> {
     this.loadToken();
     return this.http.get<any>(this.endpoint + 'list/' + username, this.httpOptions);

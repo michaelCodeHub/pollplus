@@ -1,3 +1,4 @@
+import { Answer } from './answer';
 export class Question {
 // tslint:disable-next-line: variable-name
   _id: string;

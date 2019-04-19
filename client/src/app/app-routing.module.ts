@@ -20,6 +20,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { SurveyDeleteComponent } from './survey/survey-delete/survey-delete.component';
+import { SurveyResultComponent } from './survey/survey-result/survey-result.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent, data: {title: 'Home'}},
@@ -32,6 +33,7 @@ const routes: Routes = [
   {path: 'survey/list', component: SurveyListComponent, data: {title: 'Active Survey'}},
   {path: 'survey/list/:username', component: SurveyListComponent, data: {title: 'My Survey'}},
   {path: 'survey/edit/:id', component: SurveyDetailsComponent, data: {title: 'Edit Survey'}},
+  {path: 'survey/result/:id', component: SurveyResultComponent, data: {title: 'Edit Survey'}},
   {path: 'survey/questions/:id', component: SurveyQuestionsComponent, data: {title: 'Survey Questions'}},
   {path: 'survey/list/delete/:id', component: SurveyDeleteComponent, data: {title: 'Delete Contact'}, canActivate: [AuthGuard]},
 

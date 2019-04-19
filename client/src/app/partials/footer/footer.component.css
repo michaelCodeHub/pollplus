@@ -3,6 +3,7 @@ ul {
   padding-inline-start: 0px;
 }
 
+
 .footer{
   margin: 50px;
   font-family: 'Nanum Gothic', sans-serif;
@@ -27,3 +28,13 @@ height: 50px;
     font-family: 'Nanum Gothic', sans-serif;
   }
 }
+
+@media (min-width: 736px) {
+  footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+   }
+}
+
+
