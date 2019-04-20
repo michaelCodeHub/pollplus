@@ -7,7 +7,7 @@ let surveyModel = require('../models/survey');
 let answerModel = require('../models/answer');
 
 module.exports.displaySurveyList = (req, res, next) =>{
-    surveyModel.find((err, surveyList) => {
+    surveyModel.find({ surveyFrom: { $lt: new Date() } }, (err, surveyList) => {
         if(err) {
             return console.error(err);
         }
@@ -19,7 +19,6 @@ module.exports.displaySurveyList = (req, res, next) =>{
 
 module.exports.displayMySurveyList = (req, res, next) =>{
     let username = req.params.username;
-
     surveyModel.find({ surveyAuthor: { $in: username } }, (err, surveyList) => {
         if(err) {
             return console.error(err);

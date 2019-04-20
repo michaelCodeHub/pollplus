@@ -43,6 +43,7 @@ const routes: Routes = [
   {path: 'contact/contact-list/delete/:id', component: ContactDeleteComponent, data: {title: 'Add Contact'}, canActivate: [AuthGuard]},
 
   {path: 'register', component: RegisterComponent, data: {title: 'Register'}},
+  {path: 'editprofile', component: RegisterComponent, data: {title: 'Edit'}},
   {path: 'login', component: LoginComponent, data: {title: 'Register'}},
   {path: 'logout', redirectTo: '/login', pathMatch: 'full'},
 

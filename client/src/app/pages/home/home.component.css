@@ -60,21 +60,21 @@
         height: 100%;
       }
       .carousel-item:nth-child(1) {
-        background: url('https://b1.gmbox.ru/c/122299.jpg');
+        background: url('../../../assets/images/banner1.png');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
       }
 
       .carousel-item:nth-child(2) {
-        background: url('https://stmed.net/sites/default/files/watch-dogs-hd-wallpapers-33894-8470892.jpg');
+        background: url('../../../assets/images/banner2.png');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
       }
 
       .carousel-item:nth-child(3) {
-        background: url('http://getwallpapers.com/wallpaper/full/7/2/4/547441.jpg');
+        background: url('../../../assets/images/banner3.jpg');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -99,21 +99,21 @@
     height: 100%;
   }
   .carousel-item:nth-child(1) {
-    background: url('https://vignette.wikia.nocookie.net/callofduty/images/4/47/Original_game_cover_art_IW.jpg');
+    background: url('../../../assets/images/banner1.png');
 background-size: cover;
 background-position: center center;
 background-repeat: no-repeat;
   }
 
   .carousel-item:nth-child(2) {
-    background: url('https://s3.gaming-cdn.com/images/products/254/orig/254.jpg');
+    background: url('../../../assets/images/banner2.png');
 background-size: cover;
 background-position: center center;
 background-repeat: no-repeat;
   }
 
   .carousel-item:nth-child(3) {
-    background: url('https://i.pinimg.com/originals/de/ae/8b/deae8be4e0894f57d231cb957449708e.jpg');
+    background: url('../../../assets/images/banner3.jpg');
 background-size: cover;
 background-position: center center;
 background-repeat: no-repeat;
@@ -142,7 +142,16 @@ background-repeat: no-repeat;
 .myImage{
   height: 400px;
   width: 100%;
-  background-image: url("https://stmed.net/sites/default/files/watch-dogs-hd-wallpapers-33894-8470892.jpg");
+  background: url('../../../assets/images/banner3.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.myImage2{
+  height: 400px;
+  width: 100%;
+  background: url('../../../assets/images/banner1.png');
   background-position: center center;
   background-repeat: no-repeat;
   overflow: hidden;

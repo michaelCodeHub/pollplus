@@ -30,6 +30,7 @@ router.post('/login', indexController.processLoginPage);
 
 /* POST - processes the User Registration Page */
 router.post('/register', indexController.processRegisterPage);
+router.post('/register/:id', indexController.processUpdateProfile);
 
 /* GET - perform user logout */
 router.get('/logout', indexController.performLogout);

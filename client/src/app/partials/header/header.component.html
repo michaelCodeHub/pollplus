@@ -12,12 +12,12 @@
         <a class="nav-link" routerLink="/">Home
         </a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" routerLink="/">FAQ</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/">Contact Us</a>
-      </li>
+      </li> -->
       <li class="nav-item">
           <a class="nav-link" routerLink="/survey/list">Active Surveys</a>
         </li>
@@ -39,7 +39,7 @@
               Welcome, {{ user.displayName }}
               <div class="dropdown-menu dropdown-menu-right">
                 <a class="dropdown-item" routerLink="/survey/list/{{ user.username }}" name="mySurvey">My Surveys</a>
-                <a class="dropdown-item" routerLink="#" name="editProfile">Edit Profile</a>
+                <a class="dropdown-item" routerLink="/editprofile" name="editProfile">Edit Profile</a>
                 <a class="dropdown-item"  *ngIf="isLoggedIn()" (click)="onLogoutClick()" routerLink="/logout" >
                   Logout</a>
               </div>

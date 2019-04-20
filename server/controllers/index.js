@@ -142,6 +142,15 @@ module.exports.processRegisterPage = (req, res, next) => {
   });
 };
 
+module.exports.processUpdateProfile = (req, res, next) => {
+  // define a new user object
+
+  let myId = req.params.id;
+
+  console.log(myId);
+
+};
+
 module.exports.performLogout = (req, res, next) => {
   req.logout();
   res.json({success: true, msg: 'User Successfully Logged out!'});

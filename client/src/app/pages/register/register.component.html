@@ -3,7 +3,7 @@
         <div class="col-md-4" style="margin: 0px auto;">
           <h1>Please Register</h1>
           <form autocomplete="off" (submit)="onRegisterSubmit()">
-              <fieldset class="form-group">
+              <fieldset *ngIf=!isLogIn class="form-group">
                   <label for="username">Username:</label>
                   <input type="text" class="form-control"
                   [(ngModel)]="user.username"
@@ -32,8 +32,8 @@
                   id="displayName" required autocomplete="off">
               </fieldset>
               <fieldset class="form-group text-right">
-                  <input type="submit" class="btn btn-success" value="Register">
-                  <a routerLink="/home">
+                  <input type="submit" class="btn btn-success" value="{{title}}">
+                  <a style="margin-left: 10px" routerLink="/home">
                       <input type="button" class="btn btn-warning" value="Cancel">
                   </a>
               </fieldset>

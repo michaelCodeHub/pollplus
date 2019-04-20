@@ -33,6 +33,10 @@ export class AuthService {
     return this.http.post<any>(this.endpoint + 'register', user, this.httpOptions);
   }
 
+  public updateUser(user: User): Observable<any> {
+    return this.http.post<any>(this.endpoint + 'register/' + user.id, user, this.httpOptions);
+  }
+
   public authenticateUser(user: User): Observable<any> {
     return this.http.post<any>(this.endpoint + 'login', user, this.httpOptions);
   }

@@ -49,6 +49,8 @@ export class SurveyDetailsComponent implements OnInit {
   private getSurvey(survey: Survey): void {
     this.surveyService.getSurvey(survey).subscribe(data => {
       this.survey = data.survey;
+
+
     });
   }
 
