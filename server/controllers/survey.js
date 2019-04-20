@@ -12,6 +12,7 @@ module.exports.displaySurveyList = (req, res, next) =>{
             return console.error(err);
         }
         else {
+            console.log(surveyList);
            res.json({success: true, msg: 'Survey List Displayed Successfully', surveyList: surveyList, user: req.user});
         }
     });

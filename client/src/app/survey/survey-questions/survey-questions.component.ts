@@ -54,6 +54,8 @@ export class SurveyQuestionsComponent implements OnInit {
       this.survey = data.survey;
       this.questions = this.survey.questions;
 
+      console.log(this.survey);
+
       for (let index = 0; index < this.questions.length; index++) {
 
         const answer = new Answer();

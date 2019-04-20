@@ -61,7 +61,7 @@ export class SurveyResultComponent implements OnInit {
 
   }
 
-  download(){
+  download() {
     this.downloadFile(this.filledSurvey);
   }
 
@@ -74,7 +74,7 @@ export class SurveyResultComponent implements OnInit {
 
     console.log(csvArray);
 
-    var blob = new Blob([csvArray], {type: 'text/csv' })
+    var blob = new Blob([csvArray], { type: 'text/csv' })
     saveAs(blob, "myFile.csv");
   }
 
@@ -85,35 +85,30 @@ export class SurveyResultComponent implements OnInit {
       this.filledSurvey = data.answers;
       this.questions = this.survey.questions;
 
+      this.questions.forEach(element => {
+        this.option1Count.push(0);
+        this.option2Count.push(0);
+        this.option3Count.push(0);
+        this.option4Count.push(0);
+      });
+
       this.filledSurvey.forEach(element => {
         for (let index = 0; index < element.answers.length; index++) {
           switch (element.answers[index].answer) {
 
             case '1':
-              if (this.option1Count[index] == null) {
-                this.option1Count.push(0);
-              }
               this.option1Count[index] = this.option1Count[index] + 1;
               break;
 
             case '2':
-              if (this.option2Count[index] == null) {
-                this.option2Count.push(0);
-              }
               this.option2Count[index] = this.option2Count[index] + 1;
               break;
 
             case '3':
-              if (this.option3Count[index] == null) {
-                this.option3Count.push(0);
-              }
               this.option3Count[index] = this.option3Count[index] + 1;
               break;
 
             case '4':
-              if (this.option4Count[index] == null) {
-                this.option4Count.push(0);
-              }
               this.option4Count[index] = this.option4Count[index] + 1;
               break;
 
@@ -122,7 +117,6 @@ export class SurveyResultComponent implements OnInit {
           }
         }
       });
-
     });
   }
 
