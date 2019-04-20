@@ -17,7 +17,7 @@ export class SurveyService {
 
   // private endpoint = 'https://comp308-w2019-lesson10b.herokuapp.com/api/contact-list/';
 
-  private endpoint = 'http://localhost:3000/api/survey/';
+  private endpoint = 'https://pollplusnew.herokuapp.com/api/survey/';
 
   private httpOptions = {
     headers: new HttpHeaders({

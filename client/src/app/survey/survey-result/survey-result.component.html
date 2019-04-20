@@ -1,6 +1,7 @@
 <br/>
 <div class="container result">
     <h1>{{survey.surveyTitle}}</h1>
+    <a [routerLink]="" (click)="download()" class="">Download</a>
 
     <hr/>
 
@@ -23,7 +24,7 @@
         </div>
     </div>
   </div>
-    
+
   <hr/>
 
   <div *ngFor="let question of questions;  let i = index">
