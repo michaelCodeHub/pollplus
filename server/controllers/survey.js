@@ -1,122 +1,136 @@
-let express = require('express');
+// Developers:
+// Shila Das            (ID# 300969886)
+// Michael Adaikalaraj  (ID# 300958145)
+// Nikesh Patel         (ID# 300970071)
+// Khushboo Sakervala   (ID# 300984318)
+// Gurpreet Kaur        (ID# 300989390)
+
+// WebApp Name: Poll+
+
+//Brief Description: Survey Controller
+
+let express = require("express");
 let router = express.Router();
-let jwt = require('jsonwebtoken');
+let jwt = require("jsonwebtoken");
 
 // create a reference to the db schema
-let surveyModel = require('../models/survey');
-let answerModel = require('../models/answer');
+let surveyModel = require("../models/survey");
+let answerModel = require("../models/answer");
 
-module.exports.displaySurveyList = (req, res, next) =>{
-    surveyModel.find({ surveyFrom: { $lt: new Date() } }, (err, surveyList) => {
-        if(err) {
-            return console.error(err);
-        }
-        else {
-            console.log(surveyList);
-           res.json({success: true, msg: 'Survey List Displayed Successfully', surveyList: surveyList, user: req.user});
-        }
-    });
-}
+module.exports.displaySurveyList = (req, res, next) => {
+  surveyModel.find({ surveyFrom: { $lt: new Date() } }, (err, surveyList) => {
+    if (err) {
+      return console.error(err);
+    } else {
+      console.log(surveyList);
+      res.json({
+        success: true,
+        msg: "Survey List Displayed Successfully",
+        surveyList: surveyList,
+        user: req.user
+      });
+    }
+  });
+};
 
-module.exports.displayMySurveyList = (req, res, next) =>{
-    let username = req.params.username;
-    surveyModel.find({ surveyAuthor: { $in: username } }, (err, surveyList) => {
-        if(err) {
-            return console.error(err);
-        }
-        else {
-           res.json({success: true, msg: 'Contact List Displayed Successfully', surveyList: surveyList, user: req.user});
-        }
-    });
-}
+module.exports.displayMySurveyList = (req, res, next) => {
+  let username = req.params.username;
+  surveyModel.find({ surveyAuthor: { $in: username } }, (err, surveyList) => {
+    if (err) {
+      return console.error(err);
+    } else {
+      res.json({
+        success: true,
+        msg: "Contact List Displayed Successfully",
+        surveyList: surveyList,
+        user: req.user
+      });
+    }
+  });
+};
 
-module.exports.displayAnswerList = (req, res, next) =>{
-    let id = req.params.id;
+module.exports.displayAnswerList = (req, res, next) => {
+  let id = req.params.id;
 
-    surveyModel.findById(id, (err, surveyObject) => {
-        if(err) {
-            console.log(err);
-            res.end(err);
+  surveyModel.findById(id, (err, surveyObject) => {
+    if (err) {
+      console.log(err);
+      res.end(err);
+    } else {
+      answerModel.find({ surveyId: { $in: id } }, (err, answerObject) => {
+        if (err) {
+          return console.error(err);
+        } else {
+          console.log(answerObject);
+          res.json({
+            success: true,
+            msg: "Successfully Displayed Contact to Edit",
+            survey: surveyObject,
+            answers: answerObject
+          });
         }
-        else
-        {
-            answerModel.find({ surveyId: { $in: id } }, (err, answerObject) => {
-                if(err) {
-                    return console.error(err);
-                }
-                else {
-                    console.log(answerObject);
-                    res.json({success: true, msg: 'Successfully Displayed Contact to Edit', survey: surveyObject, answers: answerObject});
-                }
-            });
-        }
-    });
+      });
+    }
+  });
+};
 
-}
+module.exports.displaySurvey = (req, res, next) => {
+  let id = req.params.id;
 
-
-module.exports.displaySurvey = (req, res, next) =>{
-    let id = req.params.id;
-
-    surveyModel.findById(id, (err, surveyObject) => {
-        if(err) {
-            console.log(err);
-            res.end(err);
-        }
-        else
-        {
-            res.json({success: true, msg: 'Successfully Displayed Contact to Edit', survey: surveyObject});
-        }
-    });
-}
+  surveyModel.findById(id, (err, surveyObject) => {
+    if (err) {
+      console.log(err);
+      res.end(err);
+    } else {
+      res.json({
+        success: true,
+        msg: "Successfully Displayed Contact to Edit",
+        survey: surveyObject
+      });
+    }
+  });
+};
 
 module.exports.displayAddPage = (req, res, next) => {
-    res.json({success: true, msg: 'Successfully Displayed Add Survey Page'});
-}
+  res.json({ success: true, msg: "Successfully Displayed Add Survey Page" });
+};
 
 module.exports.processAddPage = (req, res, next) => {
+  let newSurvey = surveyModel({
+    surveyTitle: req.body.surveyTitle,
+    surveyAuthor: req.body.surveyAuthor,
+    surveyFrom: req.body.surveyFrom,
+    surveyTill: req.body.surveyTill,
+    questions: req.body.questions
+  });
 
-
-    let newSurvey = surveyModel({
-        "surveyTitle": req.body.surveyTitle,
-        "surveyAuthor": req.body.surveyAuthor,
-        "surveyFrom": req.body.surveyFrom,
-        "surveyTill": req.body.surveyTill,
-        "questions": req.body.questions
-    });
-
-    surveyModel.create(newSurvey, (err, surveyModel) => {
-        if(err) {
-            console.log(err);
-            res.end(err);
-        }
-        else {
-            res.json({success: true, msg: 'Successfully Added New Contact'});
-        }
-    });
-}
+  surveyModel.create(newSurvey, (err, surveyModel) => {
+    if (err) {
+      console.log(err);
+      res.end(err);
+    } else {
+      res.json({ success: true, msg: "Successfully Added New Contact" });
+    }
+  });
+};
 
 module.exports.processFilledSurvey = (req, res, next) => {
+  let newAnswer = answerModel({
+    surveyId: req.body.surveyId,
+    username: req.body.username,
+    surveyCompletionDate: req.body.surveyCompletionDate,
+    answers: req.body.answers
+  });
 
-    let newAnswer = answerModel({
-        "surveyId": req.body.surveyId,
-        "username": req.body.username,
-        "surveyCompletionDate": req.body.surveyCompletionDate,
-        "answers": req.body.answers
-    });
-
-    answerModel.create(newAnswer, (err, answerModel) => {
-        if(err) {
-            console.log(err);
-            res.end(err);
-        }
-        else {
-            res.json({success: true, msg: 'Successfully Added New Contact'});
-        }
-    });
-}
-
-
+  answerModel.create(newAnswer, (err, answerModel) => {
+    if (err) {
+      console.log(err);
+      res.end(err);
+    } else {
+      res.json({ success: true, msg: "Successfully Added New Contact" });
+    }
+  });
+};
 
 // module.exports.displayEditPage = (req, res, next) => {
 //     let id = req.params.id;
@@ -155,16 +169,14 @@ module.exports.processFilledSurvey = (req, res, next) => {
 // }
 
 module.exports.performDelete = (req, res, next) => {
-    let id = req.params.id;
+  let id = req.params.id;
 
-    surveyModel.remove({_id: id}, (err) => {
-        if(err) {
-            console.log(err);
-            res.end(err);
-        }
-        else {
-            res.json({success: true, msg: 'Successfully Deleted Contact'});
-        }
-    });
-}
-
+  surveyModel.remove({ _id: id }, err => {
+    if (err) {
+      console.log(err);
+      res.end(err);
+    } else {
+      res.json({ success: true, msg: "Successfully Deleted Contact" });
+    }
+  });
+};

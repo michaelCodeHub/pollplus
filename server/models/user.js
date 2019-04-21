@@ -1,3 +1,14 @@
+// Developers:
+// Shila Das            (ID# 300969886)
+// Michael Adaikalaraj  (ID# 300958145)
+// Nikesh Patel         (ID# 300970071)
+// Khushboo Sakervala   (ID# 300984318)
+// Gurpreet Kaur        (ID# 300989390)
+
+// WebApp Name: Poll+
+
+//Brief Description: It will store the users for the app
+
 // require modules for our User Model
 let mongoose = require("mongoose");
 let passportLocalMongoose = require("passport-local-mongoose");
@@ -46,10 +57,10 @@ let userSchema = mongoose.Schema(
 
 // configure options for the UserSchema
 
-let options = ({
-    missingPasswordError: "Wrong / Missing Password"
-});
+let options = {
+  missingPasswordError: "Wrong / Missing Password"
+};
 
 userSchema.plugin(passportLocalMongoose, options);
 
-module.exports.User = mongoose.model('User', userSchema);
+module.exports.User = mongoose.model("User", userSchema);

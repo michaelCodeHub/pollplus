@@ -1,17 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-import { SurveyService } from 'src/app/services/survey.service';
-import { FlashMessagesService } from 'angular2-flash-messages';
-import { Router, ActivatedRoute } from '@angular/router';
+// Developers:
+// Shila Das            (ID# 300969886)
+// Michael Adaikalaraj  (ID# 300958145)
+// Nikesh Patel         (ID# 300970071)
+// Khushboo Sakervala   (ID# 300984318)
+// Gurpreet Kaur        (ID# 300989390)
 
-import { Survey } from 'src/app/models/survey';
+// WebApp Name: Poll+
+
+//Brief Description: Functionality for displaying list of surveys
+
+import { Component, OnInit } from "@angular/core";
+import { SurveyService } from "src/app/services/survey.service";
+import { FlashMessagesService } from "angular2-flash-messages";
+import { Router, ActivatedRoute } from "@angular/router";
+
+import { Survey } from "src/app/models/survey";
 
 @Component({
-  selector: 'app-survey-list',
-  templateUrl: './survey-list.component.html',
-  styleUrls: ['./survey-list.component.css']
+  selector: "app-survey-list",
+  templateUrl: "./survey-list.component.html",
+  styleUrls: ["./survey-list.component.css"]
 })
 export class SurveyListComponent implements OnInit {
-
   surveys: Survey[];
   username: string;
   numOfDays: number[] = new Array();
@@ -23,7 +33,7 @@ export class SurveyListComponent implements OnInit {
     private surveyService: SurveyService,
     private flashMessage: FlashMessagesService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.surveys = new Array<Survey>();
@@ -46,17 +56,17 @@ export class SurveyListComponent implements OnInit {
       if (data.success) {
         this.surveys = data.surveyList;
 
-
         for (let index = 0; index < this.surveys.length; index++) {
           const today = new Date();
           const secondDate = new Date(this.surveys[index].surveyTill);
           const timeDiff = Math.abs(today.getTime() - secondDate.getTime());
           this.numOfDays[index] = Math.ceil(timeDiff / (1000 * 3600 * 24));
         }
-
-
       } else {
-        this.flashMessage.show('User must be logged-in', { cssClass: 'alert-danger', timeOut: 3000 });
+        this.flashMessage.show("User must be logged-in", {
+          cssClass: "alert-danger",
+          timeOut: 3000
+        });
       }
     });
   }
@@ -72,19 +82,18 @@ export class SurveyListComponent implements OnInit {
           const timeDiff = Math.abs(today.getTime() - secondDate.getTime());
           this.numOfDays[index] = Math.ceil(timeDiff / (1000 * 3600 * 24));
         }
-
       } else {
-        this.flashMessage.show('User must be logged-in', { cssClass: 'alert-danger', timeOut: 3000 });
+        this.flashMessage.show("User must be logged-in", {
+          cssClass: "alert-danger",
+          timeOut: 3000
+        });
       }
     });
   }
 
   private onDeleteClick(): void {
-    if (!confirm('Are You Sure?')) {
-      this.router.navigate(['/survey/list']);
+    if (!confirm("Are You Sure?")) {
+      this.router.navigate(["/survey/list"]);
     }
   }
-
-
-
 }

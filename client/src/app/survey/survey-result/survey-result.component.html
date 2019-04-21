@@ -1,49 +1,60 @@
-<br/>
-<div class="container result">
-    <h1>{{survey.surveyTitle}}</h1>
-    <a [routerLink]="" (click)="download()" class="">Download</a>
+<!-- Developers:
+       Shila Das (ID# 300969886)
+       Michael Adaikalaraj (ID# 300958145)
+       Nikesh Patel (ID# 300970071)
+       Khushboo Sakervala (ID# 300984318)
+       Gurpreet Kaur (ID# 300989390)
 
-    <hr/>
+ WebApp Name: Poll+
+
+Brief Description: Content of Results of Survey Page-->
+<br />
+<div class="container result">
+  <h1>{{ survey.surveyTitle }}</h1>
+  <a [routerLink]="" (click)="download()" class="">Download</a>
+
+  <hr />
 
   <div class="d-none d-sm-block d-md-block">
     <div class="row">
       <div class="col-lg-4">
-          <p class="font-weight-bold">Question</p>
+        <p class="font-weight-bold">Question</p>
       </div>
-        <div class="col-lg-2">
-            <p class="font-weight-bold">Option1</p>
-        </div>
-        <div class="col-lg-2">
-            <p class="font-weight-bold">Option2</p>
-        </div>
-        <div class="col-lg-2">
-            <p class="font-weight-bold">Option3</p>
-        </div>
-        <div class="col-lg-2">
-            <p class="font-weight-bold">Option4</p>
-        </div>
+      <div class="col-lg-2">
+        <p class="font-weight-bold">Option1</p>
+      </div>
+      <div class="col-lg-2">
+        <p class="font-weight-bold">Option2</p>
+      </div>
+      <div class="col-lg-2">
+        <p class="font-weight-bold">Option3</p>
+      </div>
+      <div class="col-lg-2">
+        <p class="font-weight-bold">Option4</p>
+      </div>
     </div>
   </div>
 
-  <hr/>
+  <hr />
 
-  <div *ngFor="let question of questions;  let i = index">
-      <div class="row">
-        <div class="col-lg-4">
-            <p class="font-weight-bold">{{i+1}}) {{ question.question }}</p>
-        </div>
-          <div class="col-lg-2">
-              <p> ({{option1Count[i]}}) {{question.option1}}</p>
-          </div>
-          <div class="col-lg-2">
-              <p> ({{option2Count[i]}}) {{question.option2}}</p>
-          </div>
-          <div class="col-lg-2">
-              <p> ({{option3Count[i]}}) {{question.option3}}</p>
-          </div>
-          <div class="col-lg-2">
-              <p> ({{option4Count[i]}}) {{question.option4}}</p>
-          </div>
+  <div *ngFor="let question of questions; let i = index">
+    <div class="row">
+      <div class="col-lg-4">
+        <p class="font-weight-bold">{{ i + 1 }}) {{ question.question }}</p>
       </div>
-      <hr/>
+      <div class="col-lg-2">
+        <p>({{ option1Count[i] }}) {{ question.option1 }}</p>
+      </div>
+      <div class="col-lg-2">
+        <p>({{ option2Count[i] }}) {{ question.option2 }}</p>
+      </div>
+      <div class="col-lg-2">
+        <p>({{ option3Count[i] }}) {{ question.option3 }}</p>
+      </div>
+      <div class="col-lg-2">
+        <p>({{ option4Count[i] }}) {{ question.option4 }}</p>
+      </div>
+    </div>
+    <hr />
+  </div>
 </div>

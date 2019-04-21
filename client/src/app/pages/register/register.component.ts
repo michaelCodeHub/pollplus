@@ -1,14 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { FlashMessagesService } from 'angular2-flash-messages';
-import { AuthService } from 'src/app/services/auth.service';
-import { Router, ActivatedRoute } from '@angular/router';
+// Developers:
+// Shila Das            (ID# 300969886)
+// Michael Adaikalaraj  (ID# 300958145)
+// Nikesh Patel         (ID# 300970071)
+// Khushboo Sakervala   (ID# 300984318)
+// Gurpreet Kaur        (ID# 300989390)
 
-import { User } from 'src/app/models/user';
+// WebApp Name: Poll+
+
+//Brief Description: Functionality of Registration page for new users.
+
+import { Component, OnInit } from "@angular/core";
+import { FlashMessagesService } from "angular2-flash-messages";
+import { AuthService } from "src/app/services/auth.service";
+import { Router, ActivatedRoute } from "@angular/router";
+
+import { User } from "src/app/models/user";
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: "app-register",
+  templateUrl: "./register.component.html",
+  styleUrls: ["./register.component.css"]
 })
 export class RegisterComponent implements OnInit {
   user: User;
@@ -20,22 +31,19 @@ export class RegisterComponent implements OnInit {
     private flashMessage: FlashMessagesService,
     private authService: AuthService,
     private router: Router
-
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.user = new User();
 
     this.isLoggedIn();
     this.title = this.activatedRoute.snapshot.data.title;
-
   }
-
 
   isLoggedIn(): boolean {
     const result = this.authService.loggedIn();
     if (result) {
-      this.user = JSON.parse(localStorage.getItem('user'));
+      this.user = JSON.parse(localStorage.getItem("user"));
       console.log(this.user.id);
       this.isLogIn = true;
     }
@@ -43,33 +51,40 @@ export class RegisterComponent implements OnInit {
   }
 
   onRegisterSubmit(): void {
-
-    if (this.title === 'Edit') {
-
+    if (this.title === "Edit") {
       console.log(this.user.displayName);
 
       this.authService.updateUser(this.user).subscribe(data => {
         if (data.success) {
-          this.flashMessage.show('You are now registered and may log in', { cssClass: 'alert-success', timeOut: 3000 });
-          this.router.navigate(['/login']);
+          this.flashMessage.show("You are now registered and may log in", {
+            cssClass: "alert-success",
+            timeOut: 3000
+          });
+          this.router.navigate(["/login"]);
         } else {
-          this.flashMessage.show('A registration Error Occurred', { cssClass: 'alert-danger', timeOut: 3000 });
-          this.router.navigate(['/register']);
+          this.flashMessage.show("A registration Error Occurred", {
+            cssClass: "alert-danger",
+            timeOut: 3000
+          });
+          this.router.navigate(["/register"]);
         }
       });
-    }
-    else {
-
+    } else {
       this.authService.registerUser(this.user).subscribe(data => {
         if (data.success) {
-          this.flashMessage.show('You are now registered and may log in', { cssClass: 'alert-success', timeOut: 3000 });
-          this.router.navigate(['/login']);
+          this.flashMessage.show("You are now registered and may log in", {
+            cssClass: "alert-success",
+            timeOut: 3000
+          });
+          this.router.navigate(["/login"]);
         } else {
-          this.flashMessage.show('A registration Error Occurred', { cssClass: 'alert-danger', timeOut: 3000 });
-          this.router.navigate(['/register']);
+          this.flashMessage.show("A registration Error Occurred", {
+            cssClass: "alert-danger",
+            timeOut: 3000
+          });
+          this.router.navigate(["/register"]);
         }
       });
     }
   }
-
 }

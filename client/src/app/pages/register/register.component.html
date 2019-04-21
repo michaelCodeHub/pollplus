@@ -1,43 +1,78 @@
+<!-- Developers:
+       Shila Das (ID# 300969886)
+       Michael Adaikalaraj (ID# 300958145)
+       Nikesh Patel (ID# 300970071)
+       Khushboo Sakervala (ID# 300984318)
+       Gurpreet Kaur (ID# 300989390)
+
+ WebApp Name: Poll+
+
+Brief Description: Content of Registration Page-->
+
 <section class="container login">
-    <div class="row inside">
-        <div class="col-md-4" style="margin: 0px auto;">
-          <h1>Please Register</h1>
-          <form autocomplete="off" (submit)="onRegisterSubmit()">
-              <fieldset *ngIf=!isLogIn class="form-group">
-                  <label for="username">Username:</label>
-                  <input type="text" class="form-control"
-                  [(ngModel)]="user.username"
-                  name="username" placeholder="Enter Username"
-                  id="username" required autocomplete="off">
-              </fieldset>
-              <fieldset class="form-group">
-                  <label for="password">Password:</label>
-                  <input type="password" class="form-control"
-                  [(ngModel)]="user.password"
-                  name="password" placeholder="Enter Password"
-                  id="password" required autocomplete="off">
-              </fieldset>
-              <fieldset class="form-group">
-                  <label for="email">Email:</label>
-                  <input type="email" class="form-control"
-                  [(ngModel)]="user.email"
-                  name="email" placeholder="Enter Email"
-                  id="email" required autocomplete="off">
-              </fieldset>
-              <fieldset class="form-group">
-                  <label for="displayName">Dispaly Name:</label>
-                  <input type="text" class="form-control"
-                  [(ngModel)]="user.displayName"
-                  name="displayName" placeholder="Enter Display Name"
-                  id="displayName" required autocomplete="off">
-              </fieldset>
-              <fieldset class="form-group text-right">
-                  <input type="submit" class="btn btn-success" value="{{title}}">
-                  <a style="margin-left: 10px" routerLink="/home">
-                      <input type="button" class="btn btn-warning" value="Cancel">
-                  </a>
-              </fieldset>
-          </form>
-      </div>
+  <div class="row inside">
+    <div class="col-md-4" style="margin: 0px auto;">
+      <h1>Please Register</h1>
+      <form autocomplete="off" (submit)="onRegisterSubmit()">
+        <fieldset *ngIf="!isLogIn" class="form-group">
+          <label for="username">Username:</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="user.username"
+            name="username"
+            placeholder="Enter Username"
+            id="username"
+            required
+            autocomplete="off"
+          />
+        </fieldset>
+        <fieldset class="form-group">
+          <label for="password">Password:</label>
+          <input
+            type="password"
+            class="form-control"
+            [(ngModel)]="user.password"
+            name="password"
+            placeholder="Enter Password"
+            id="password"
+            required
+            autocomplete="off"
+          />
+        </fieldset>
+        <fieldset class="form-group">
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            class="form-control"
+            [(ngModel)]="user.email"
+            name="email"
+            placeholder="Enter Email"
+            id="email"
+            required
+            autocomplete="off"
+          />
+        </fieldset>
+        <fieldset class="form-group">
+          <label for="displayName">Dispaly Name:</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="user.displayName"
+            name="displayName"
+            placeholder="Enter Display Name"
+            id="displayName"
+            required
+            autocomplete="off"
+          />
+        </fieldset>
+        <fieldset class="form-group text-right">
+          <input type="submit" class="btn btn-success" value="{{ title }}" />
+          <a style="margin-left: 10px" routerLink="/home">
+            <input type="button" class="btn btn-warning" value="Cancel" />
+          </a>
+        </fieldset>
+      </form>
+    </div>
   </div>
 </section>
